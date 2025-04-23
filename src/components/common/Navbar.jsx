@@ -1,6 +1,8 @@
 "use client";
 import React, {useState, useEffect} from "react";
+import { useRouter } from "next/navigation";
 import { 
+  Button,
   AppBar,
   Toolbar,
   Typography,
@@ -78,23 +80,40 @@ const ProfileTitle = styled(Typography)(({ theme }) => ({
 }));
 
 const Navbar = () => {
-  let user = useSelector((state) => state.auth.user);;
+  const reduxUser = useSelector((state) => state.auth.user);
+  const [user, setUser] = useState(reduxUser);
+  const router = useRouter();
   useEffect(() => {
-    if(!user) {
-      user = JSON.parse(localStorage.getItem('user'));
-      console.log("user", user);
+    if (!reduxUser) {
+      console.log("Redux user", reduxUser);
+      const storedUser = localStorage.getItem("user");
+      console.log("LocalStorage user", storedUser);
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
     }
-  }, []);
+  }, [reduxUser]);
   const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${user?.image}`;
   return (
     <StyledAppBar>
       <NavToolbar>
-        <div>
-          <GreetingText>
-            Hello, <Subtext component="span">{user?.name.split(' ')[0]}</Subtext>
-          </GreetingText>
-          <DateText variant="caption">{new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}</DateText>
-        </div>
+      {user ? (
+          <div>
+            <GreetingText>
+              Hello, <Subtext component="span">{user?.name?.split(' ')[0]}</Subtext>
+            </GreetingText>
+            <DateText variant="caption">
+              {new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}
+            </DateText>
+          </div>
+        ) : (
+          <div>
+            <GreetingText>Welcome!</GreetingText>
+            <DateText variant="caption">
+              {new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}
+            </DateText>
+          </div>
+        )}
 
         <Stack width={'50%'} direction="row" justifyContent={'space-between'} alignItems="center" mr={4}>
           <NavIcon src="/icons/buy-sell-link.svg" alt="Buy/Sell" />
@@ -102,13 +121,56 @@ const Navbar = () => {
           <NavIcon src="/icons/offer-link.svg" alt="Offers" />
           <NavIcon src="/icons/cart-link.svg" alt="Cart" />
 
-          <UserInfoContainer>
+          {user && <UserInfoContainer>
             <Avatar alt="Andrew Smith" src={imageSrc} />
             <div>
               <UserName>{user?.name}</UserName>
               <ProfileTitle>{user?.type} Profile</ProfileTitle>
             </div>
-          </UserInfoContainer>
+          </UserInfoContainer>}
+
+          {!user && <UserInfoContainer>
+            <Button
+            variant="contained"
+            onClick={() => router.push('/login')}
+            sx={{
+              backgroundColor: '#FFD600',
+              color: 'black',
+              borderRadius: '10px',
+              fontWeight: '400',
+              height: '40px',
+              width:'25%',
+              textTransform: 'none',
+              px: 2,
+              '&:hover': {
+                backgroundColor: '#FFC000',
+              },
+            }}
+          >
+            Login
+          </Button>
+            <Button
+            variant="contained"
+            onClick={() => router.push('/signup')}
+            sx={{
+              backgroundColor: '#FFD600',
+              color: 'black',
+              borderRadius: '10px',
+              fontWeight: '400',
+              height: '40px',
+              width:'30%',
+              textTransform: 'none',
+              px: 2,
+              '&:hover': {
+                backgroundColor: '#FFC000',
+              },
+            }}
+          >
+            Register
+          </Button>
+        </UserInfoContainer>
+
+        }
         </Stack>
       </NavToolbar>
     </StyledAppBar>

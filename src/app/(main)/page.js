@@ -7,6 +7,8 @@ import FeaturesOffer from "@/components/home/FeaturesOffer";
 import HeroBanner from "@/components/home/HeroBanner";
 import OurServices from "@/components/home/OurServices";
 import Products from "@/components/home/Products";
+import Footer from "@/components/home/footer/Footer";
+
 import { Banner, CarServices, ListedCars, WelcomeBanner } from "@/components/home";
 
 // const Container = styled(Box)(({ theme }) => ({
@@ -54,6 +56,7 @@ const Page = () => {
         <OurServices />
         <ListedCars />
         <Products />
+        <Footer />
     </>
     //   </Content>
     // </Container>

@@ -26,7 +26,11 @@ const WithModalHOC = (WrappedComponent, customStyles = {}) => {
 		return (
 			<Modal
 				open={open}
-				onClose={handleClose}
+				onClose={(event, reason) => {
+					if (reason !== 'backdropClick') {
+					  handleClose();
+					}
+				}}
 				sx={theme => ({ ...modalStyl(theme) })}
 			>
 				<Box

@@ -1,7 +1,6 @@
 import React from 'react';
-import {AddCarForm} from '@/components/carServiceComponent/addCar';
+import AddCarForm from '@/components/carServiceComponent/addCar';
 import {modalStyles} from '@/components/common/SignUpModel';
-import {WithModalHOC} from '@/components/layouts/WithModalHOC';
 import {
   Box,
   Typography,

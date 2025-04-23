@@ -1,0 +1,36 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "create-firebase-config": "node src/scripts/firebase-config.js",
+    "build": "node src/scripts/firebase-config.js && next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.0.1",
+    "@mui/joy": "^5.0.0-beta.52",
+    "@mui/material": "^7.0.1",
+    "@mui/material-nextjs": "^7.0.0",
+    "@reduxjs/toolkit": "^2.6.1",
+    "dotenv": "^16.5.0",
+    "firebase": "^11.6.0",
+    "formik": "^2.4.6",
+    "next": "15.2.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.2",
+    "react-redux": "^9.2.0",
+    "swiper": "^11.2.6",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.4"
+  }
+}

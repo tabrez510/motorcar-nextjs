@@ -1,0 +1,17 @@
+<CustomTextField
+        label="Email / Number"
+        variant="outlined"
+        fullWidth
+        required
+        placeholder="Enter your email or phone number"
+      />
+
+      <CustomTextField
+        label="Password"
+        variant="outlined"
+        fullWidth
+        required
+        type="password"
+        showPasswordToggle
+        placeholder="Enter your password"
+      />

@@ -1,6 +1,7 @@
 import React from 'react';
-import AddCarForm from '@/components/carServiceComponent/addCar';
+import AddCar from '@/components/carServiceComponent/addCar';
 import {modalStyles} from '@/components/common/SignUpModel';
+import {WithModalHOC} from '@/components/layouts/WithModalHOC';
 import {
   Box,
   Typography,
@@ -173,7 +174,6 @@ const SelectCar = ({ onNext }) => {
           </StyledBox>
         ))}
       </BoxWrapper>
-        <AddCarForm/>
     </Box>
   );
 };

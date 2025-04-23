@@ -64,7 +64,7 @@ function SignInPage() {
         }
       } catch (error) {
         console.error("API Error:", error);
-        toast.error(error.message || "Something went wrong. Please try again.");
+        toast.error("Invalid number or Number does not belongs to +971");
       }
     },
   });

@@ -48,10 +48,11 @@ let onlyLogo=false;
           // router.push(`/signup/corporate-signup/verify-phone?phone=${encodeURIComponent(values.phoneNumber)}`);
           router.push(`/forgot-password/verify?phone=${encodeURIComponent(values.emailOrPhone)}`);
         } else {
-          toast.error(res.message);
+          toast.error("Invalid phone number.");
         }
       } catch (error) {
         console.error("API Error:", error);
+        toast.error("Something went wrong. Please try again.");
       }
     },
   })

@@ -36,6 +36,7 @@ const UserInfoContainer = styled(Stack)(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   gap: theme.spacing(1),
+  justifyContent: 'flex-end'
 }));
 
 const NavIcon = styled('img')({

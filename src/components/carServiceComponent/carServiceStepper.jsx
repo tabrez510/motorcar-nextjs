@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Step, StepLabel, Stepper } from '@mui/material';
-import SelectCar from './SelectCar';
-import CarSubCategory from './CarSubCategory';
-import PostRequirement from './PostRequirement';
+import SelectCar from '@/components/carServiceComponent/selectCar';
+import CarSubCategory from '@/components/carServiceComponent/carSubCategory';
+import PostRequirement from '@/components/carServiceComponent/postRequirement';
 
 const steps = [
   "Selected Car Service",
